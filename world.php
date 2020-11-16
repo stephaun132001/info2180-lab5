@@ -12,10 +12,26 @@ $find_country = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country
 $results = $find_country->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Continent</th>
+      <th>Independence</th>
+      <th>Head of State</th>
+    </tr>
+  </thead>
+<tbody>
 
-  <ul>
-  <?php foreach ($results as $row): ?>
-    <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
+<?php foreach ($results as $row): ?>
+    <tr>
+      <td><?php echo $row['name'];?></td>
+      <td><?php echo $row['continent'];?></td>
+      <td><?php echo $row['independence_year'];?></td>
+      <td><?php echo $row['head_of_state'];?></td>
+    </tr>
   <?php endforeach; ?>
-  </ul>
+</tbody>
+</table>
+  
  
